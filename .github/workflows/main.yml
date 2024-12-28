@@ -3,12 +3,11 @@ name: Java CI/CD Workflow
 on:
   push:
     branches:
-      - main
-      - developer
+      - master
 
 jobs:
   build:
-    runs-on: [self-hosted] # Use your self-hosted runner
+    runs-on: self-hosted # Use your self-hosted runner
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -22,15 +21,15 @@ jobs:
         run: mvn clean install
 
   deploy-production:
-    runs-on: [self-hosted] # Use your self-hosted runner
+    runs-on: self-hosted # Use your self-hosted runner
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/feature'
     steps:
       - name: Deploy to Production
         run: echo "Deploying to Production"
 
   deploy-development:
-    runs-on: [self-hosted] # Use your self-hosted runner
+    runs-on: self-hosted # Use your self-hosted runner
     needs: build
     if: github.ref == 'refs/heads/developer'
     steps:
