@@ -20,18 +20,18 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
-  deploy-production:
-    runs-on: self-hosted # Use your self-hosted runner
-    needs: build
-    if: github.ref == 'refs/heads/feature'
-    steps:
-      - name: Deploy to Production
-        run: echo "Deploying to Production"
+  # deploy-production:
+  #   runs-on: self-hosted # Use your self-hosted runner
+  #   needs: build
+  #   if: github.ref == 'refs/heads/feature'
+  #   steps:
+  #     - name: Deploy to Production
+  #       run: echo "Deploying to Production"
 
-  deploy-development:
-    runs-on: self-hosted # Use your self-hosted runner
-    needs: build
-    if: github.ref == 'refs/heads/developer'
-    steps:
-      - name: Deploy to Development
-        run: echo "Deploying to Development"
+  # deploy-development:
+  #   runs-on: self-hosted # Use your self-hosted runner
+  #   needs: build
+  #   if: github.ref == 'refs/heads/developer'
+  #   steps:
+  #     - name: Deploy to Development
+  #       run: echo "Deploying to Development"
